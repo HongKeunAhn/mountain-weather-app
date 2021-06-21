@@ -1,22 +1,14 @@
 {
-   "processors": [
-   ],
-   "extends": [
-   ],
-   "plugins": [
-     "stylelint-prettier",
-   ],
-   "rules": {
-     "prettier/prettier": true,
-     "value-no-vendor-prefix": null,
-     "order/order": [
-       "custom-properties",
-       "dollar-variables",
-       "at-variables",
-       "declarations",
-       "rules",
-       "at-rules",
-       "less-mixins"
-     ],
-   }
- }
+  "processors": [
+  ],
+  "extends": [
+  ],
+  "plugins": [
+    "stylelint-prettier",
+    "stylelint-config-rational-order/plugin",
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "value-no-vendor-prefix": null,
+  }
+}
