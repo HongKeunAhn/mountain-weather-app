@@ -1,5 +1,132 @@
-html,
-body {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(45deg, #fc466b, #3f5efb);
+  padding: 0 2rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  min-width: 30rem;
+  max-height: calc(100vh - 6rem);
   width: 100%;
   height: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+  padding: 0 2rem;
+}
+
+.search-input-wrap {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.search-input {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  background: transparent;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+::placeholder {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.weather-card {
+  max-width: 38rem;
+  width: 100%;
+  margin-top: 4rem;
+  padding: 2rem;
+
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.weather-city {
+  text-align: center;
+}
+
+.weather-city span {
+  font-size: 4.8rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.weather-city sup {
+  font-size: 2.4rem;
+  vertical-align: top;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.weather-temperature {
+  text-align: center;
+}
+
+.weather-temperature span {
+  font-size: 3.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.weather-temperature sup {
+  font-size: 1.5rem;
+  vertical-align: top;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.weather-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.weather-icon {
+  animation: wave 5s linear infinite;
+}
+
+.weather-viewer p {
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(1rem);
+  }
+  50% {
+    transform: translateY(0rem);
+  }
+  75% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
