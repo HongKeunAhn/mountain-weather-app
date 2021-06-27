@@ -44,7 +44,7 @@
 }
 
 ::placeholder {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.6);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -62,21 +62,49 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.weather-city {
+.weather-title {
   text-align: center;
 }
 
-.weather-city span {
-  font-size: 4.8rem;
+.weather-title h5 {
+  font-size: 3.2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
 
-.weather-city sup {
-  font-size: 2.4rem;
-  vertical-align: top;
+.weather-title p {
+  font-size: 2rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: #fff;
+  margin-top: 1rem;
+}
+
+.weather-information .info-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.weather-information .info-list ~ .info-list {
+  margin-top: 1rem;
+}
+
+.info-list .info-title {
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info-list .info-text {
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.info-list .info-text sup {
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .weather-temperature {
@@ -105,12 +133,6 @@
 
 .weather-icon {
   animation: wave 5s linear infinite;
-}
-
-.weather-viewer p {
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  color: #fff;
 }
 
 @keyframes wave {
