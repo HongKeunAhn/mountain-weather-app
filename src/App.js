@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { fetchWeather } from './api/fetchWeather';
+import { findCityWeather } from './api/fetchWeather';
 import './App.css';
 
 function App() {
-  const [query, setQuery] = useState('');
+  const [cityName, setCityName] = useState('');
   const [weather, setWeather] = useState({});
 
   const search = async (e) => {
     if (e.key === 'Enter') {
-      const response = await fetchWeather(query);
+      const response = await findCityWeather(cityName);
       setWeather(response);
-      setQuery('');
+      setCityName('');
     }
   };
 
@@ -22,8 +22,8 @@ function App() {
             type='text'
             className='search-input'
             placeholder='Search...'
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={cityName}
+            onChange={(e) => setCityName(e.target.value)}
             onKeyPress={search}
           />
         </div>
