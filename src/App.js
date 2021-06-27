@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { findCityWeather } from './api/fetchWeather';
+
+import { mountainList } from './constants/mountainList';
+import { findMountainWeather } from './api/fetchWeather';
 import './App.css';
 
 function App() {
-  const [cityName, setCityName] = useState('');
+  const [mountainName, setMountainName] = useState('');
   const [weather, setWeather] = useState({});
+  const [error, setError] = useState();
 
-  const search = async (e) => {
+  const search = async (e, name) => {
     if (e.key === 'Enter') {
-      const response = await findCityWeather(cityName);
-      setWeather(response);
-      setCityName('');
+      const { data, status } = await findMountainWeather(mountainList[mountainName]);
+
+      setWeather(data);
+      setError(status);
     }
   };
 
@@ -21,29 +25,68 @@ function App() {
           <input
             type='text'
             className='search-input'
-            placeholder='Search...'
-            value={cityName}
-            onChange={(e) => setCityName(e.target.value)}
+            placeholder='산 이름만 검색해줘요'
+            value={mountainName}
+            onChange={(e) => setMountainName(e.target.value)}
             onKeyPress={search}
           />
         </div>
         {weather.main && (
           <div className='weather-card'>
-            <h2 className='weather-city'>
-              <span>{weather.name}</span>
-              <sup>{weather.sys.country}</sup>
-            </h2>
-            <div className='weather-temperature'>
-              <span>{Math.round(weather.main.temp)}</span>
-              <sup>&deg;C</sup>
+            <div className='weather-title'>
+              <h5>현재 날씨</h5>
+              <p>{weather?.weather[0]?.description}</p>
             </div>
             <div className='weather-viewer'>
               <img
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`}
                 className='weather-icon'
-                alt={weather.weather[0].main}
+                alt={weather?.weather[0]?.main}
               />
-              <p>{weather.weather[0].description}</p>
+            </div>
+            <ul className='weather-information'>
+              <li className='info-list'>
+                <div className='info-title'>온도</div>
+                <div className='info-text'>
+                  <span>{Math.round(weather?.main?.temp)}</span>
+                  <sup>&deg;C</sup>
+                </div>
+              </li>
+              <li className='info-list'>
+                <div className='info-title'>습도</div>
+                <div className='info-text'>
+                  <span>{Math.round(weather?.main?.humidity)}</span>
+                  <sup>%</sup>
+                </div>
+              </li>
+              <li className='info-list'>
+                <div className='info-title'>대기압</div>
+                <div className='info-text'>
+                  <span>{Math.round(weather?.main?.pressure)}</span>
+                  <sup>hPa</sup>
+                </div>
+              </li>
+              <li className='info-list'>
+                <div className='info-title'>풍속</div>
+                <div className='info-text'>
+                  <span>{Math.round(weather?.wind?.speed)}</span>
+                  <sup>m/s</sup>
+                </div>
+              </li>
+              <li className='info-list'>
+                <div className='info-title'>풍향</div>
+                <div className='info-text'>
+                  <span>{Math.round(weather?.wind?.deg)}</span>
+                  <sup>&deg;</sup>
+                </div>
+              </li>
+            </ul>
+          </div>
+        )}
+        {error === 400 && (
+          <div className='weather-card'>
+            <div className='weather-temperature'>
+              <span>없는 산이야!</span>
             </div>
           </div>
         )}
